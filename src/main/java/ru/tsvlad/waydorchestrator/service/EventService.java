@@ -1,18 +1,17 @@
 package ru.tsvlad.waydorchestrator.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import ru.tsvlad.waydorchestrator.event.EventEvent;
+import ru.tsvlad.waydorchestrator.messaging.EventMessage;
 
 @Service
 @AllArgsConstructor
 public class EventService {
-    private final KafkaTemplate<Long, EventEvent> kafkaStarshipTemplate;
+    private final KafkaTemplate<Long, EventMessage> kafkaStarshipTemplate;
 
 
-    public void send(EventEvent dto) {
+    public void send(EventMessage dto) {
         kafkaStarshipTemplate.send("server.starship", dto);
     }
 }

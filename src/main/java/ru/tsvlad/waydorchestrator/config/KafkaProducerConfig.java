@@ -10,7 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import ru.tsvlad.waydorchestrator.event.EventEvent;
+import ru.tsvlad.waydorchestrator.messaging.EventMessage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,13 +34,13 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<Long, EventEvent> producerStarshipFactory() {
+    public ProducerFactory<Long, EventMessage> producerStarshipFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
     @Bean
-    public KafkaTemplate<Long, EventEvent> kafkaTemplate() {
-        KafkaTemplate<Long, EventEvent> template = new KafkaTemplate<>(producerStarshipFactory());
+    public KafkaTemplate<Long, EventMessage> kafkaTemplate() {
+        KafkaTemplate<Long, EventMessage> template = new KafkaTemplate<>(producerStarshipFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
         return template;
     }

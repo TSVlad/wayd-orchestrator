@@ -1,4 +1,4 @@
-package ru.tsvlad.waydorchestrator.event.dto;
+package ru.tsvlad.waydorchestrator.messaging.dto;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;

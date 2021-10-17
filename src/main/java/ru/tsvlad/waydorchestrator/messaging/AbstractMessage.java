@@ -1,4 +1,4 @@
-package ru.tsvlad.waydorchestrator.event;
+package ru.tsvlad.waydorchestrator.messaging;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public abstract class AbstractEvent implements Serializable {
+public abstract class AbstractMessage implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long id;
 
@@ -16,7 +16,7 @@ public abstract class AbstractEvent implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     private LocalDateTime created;
 
-    public AbstractEvent() {
+    public AbstractMessage() {
         this.created = LocalDateTime.now();
     }
 }
