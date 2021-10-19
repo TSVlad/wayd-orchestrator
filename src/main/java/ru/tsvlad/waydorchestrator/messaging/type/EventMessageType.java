@@ -1,5 +1,5 @@
 package ru.tsvlad.waydorchestrator.messaging.type;
 
-public enum EventEventType {
+public enum EventMessageType {
     CREATED
 }
