@@ -10,7 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import ru.tsvlad.waydorchestrator.consumer.EventValidationMessage;
+import ru.tsvlad.waydorchestrator.messaging.ValidatorMessage;
 import ru.tsvlad.waydorchestrator.messaging.EventMessage;
 
 import java.util.HashMap;
@@ -46,13 +46,13 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<Long, EventValidationMessage> producerEventValidationFactory() {
+    public ProducerFactory<Long, ValidatorMessage> producerEventValidationFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs("event-validation-"));
     }
 
     @Bean
-    public KafkaTemplate<Long, EventValidationMessage> eventValidationKafkaTemplate() {
-        KafkaTemplate<Long, EventValidationMessage> template = new KafkaTemplate<>(producerEventValidationFactory());
+    public KafkaTemplate<Long, ValidatorMessage> eventValidationKafkaTemplate() {
+        KafkaTemplate<Long, ValidatorMessage> template = new KafkaTemplate<>(producerEventValidationFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
         return template;
     }
