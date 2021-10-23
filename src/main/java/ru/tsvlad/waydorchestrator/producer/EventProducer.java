@@ -7,14 +7,10 @@ import ru.tsvlad.waydorchestrator.messaging.EventMessage;
 
 @Service
 @AllArgsConstructor
-public class EventToValidatorProducer {
+public class EventProducer {
     private final KafkaTemplate<Long, EventMessage> eventMessageKafkaTemplate;
 
-    public void eventToValidator(EventMessage message) {
-        send(message);
-    }
-
-    private void send(EventMessage message) {
+    public void sendToValidator(EventMessage message) {
         eventMessageKafkaTemplate.send("event-to-validator", message);
     }
 }

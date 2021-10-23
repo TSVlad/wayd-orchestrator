@@ -10,6 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import ru.tsvlad.waydorchestrator.messaging.UserMessage;
 import ru.tsvlad.waydorchestrator.messaging.ValidatorMessage;
 import ru.tsvlad.waydorchestrator.messaging.EventMessage;
 
@@ -33,26 +34,41 @@ public class KafkaProducerConfig {
         return props;
     }
 
+
     @Bean
-    public ProducerFactory<Long, EventMessage> producerEventMessageFactory() {
+    public ProducerFactory<Long, EventMessage> eventMessageFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs("event-"));
     }
 
     @Bean
     public KafkaTemplate<Long, EventMessage> eventMessageKafkaTemplate() {
-        KafkaTemplate<Long, EventMessage> template = new KafkaTemplate<>(producerEventMessageFactory());
+        KafkaTemplate<Long, EventMessage> template = new KafkaTemplate<>(eventMessageFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
         return template;
     }
 
+
     @Bean
-    public ProducerFactory<Long, ValidatorMessage> producerEventValidationFactory() {
+    public ProducerFactory<Long, ValidatorMessage> validatorMessageFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs("event-validation-"));
     }
 
     @Bean
-    public KafkaTemplate<Long, ValidatorMessage> eventValidationKafkaTemplate() {
-        KafkaTemplate<Long, ValidatorMessage> template = new KafkaTemplate<>(producerEventValidationFactory());
+    public KafkaTemplate<Long, ValidatorMessage> validatorMessageKafkaTemplate() {
+        KafkaTemplate<Long, ValidatorMessage> template = new KafkaTemplate<>(validatorMessageFactory());
+        template.setMessageConverter(new StringJsonMessageConverter());
+        return template;
+    }
+
+
+    @Bean
+    public ProducerFactory<Long, UserMessage> userMessageFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfigs("user-to-validator-"));
+    }
+
+    @Bean
+    public KafkaTemplate<Long, UserMessage> userMessageKafkaTemplate() {
+        KafkaTemplate<Long, UserMessage> template = new KafkaTemplate<>(userMessageFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
         return template;
     }
