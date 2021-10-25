@@ -14,4 +14,8 @@ public class UserProducer {
     public void sendToValidator(UserMessage message) {
         userMessageKafkaTemplate.send("user-to-validator", message);
     }
+
+    public void sendToNotification(UserMessage message) {
+        userMessageKafkaTemplate.send("user-to-notification", message);
+    }
 }

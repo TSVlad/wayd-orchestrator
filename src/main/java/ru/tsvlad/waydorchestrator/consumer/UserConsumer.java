@@ -18,6 +18,10 @@ public class UserConsumer {
             case CREATED:
             case UPDATED:
                 userProducer.sendToValidator(userMessage);
+                break;
+            case CONFIRMATION_CODE_GENERATED:
+                userProducer.sendToNotification(userMessage);
+                break;
         }
     }
 }

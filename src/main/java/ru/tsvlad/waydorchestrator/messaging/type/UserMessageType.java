@@ -2,5 +2,6 @@ package ru.tsvlad.waydorchestrator.messaging.type;
 
 public enum UserMessageType {
     CREATED,
-    UPDATED
+    UPDATED,
+    CONFIRMATION_CODE_GENERATED
 }
