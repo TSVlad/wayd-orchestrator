@@ -5,9 +5,10 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class UserPublicDTO {
+public class UserDTO {
     private long id;
     private String username;
     private List<RoleDTO> roles;
     private String contacts;
+    private String email;
 }
