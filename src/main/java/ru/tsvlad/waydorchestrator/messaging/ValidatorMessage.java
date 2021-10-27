@@ -1,6 +1,7 @@
 package ru.tsvlad.waydorchestrator.messaging;
 
 import lombok.*;
+import ru.tsvlad.waydorchestrator.messaging.dto.Validity;
 import ru.tsvlad.waydorchestrator.messaging.type.ValidatorMessageType;
 
 @EqualsAndHashCode(callSuper = true)
@@ -12,5 +13,5 @@ public class ValidatorMessage extends AbstractMessage {
     private ValidatorMessageType type;
     private String eventId;
     private long userId;
-    private boolean isValid;
+    private Validity validity;
 }
