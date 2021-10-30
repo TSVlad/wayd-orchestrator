@@ -1,5 +1,6 @@
 package ru.tsvlad.waydorchestrator.messaging.type;
 
 public enum EventMessageType {
-    CREATED
+    EVENT_CREATED,
+    EVENT_UPDATED
 }

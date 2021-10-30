@@ -23,6 +23,9 @@ public class EventDTO {
     private List<String> picturesRefs = new ArrayList<>();
     private GeoJsonPoint point;
 
+    private Validity validity;
+    private EventStatus status;
+
     private long ownerId;
     private List<Long> participantsIds = new ArrayList<>();
 }

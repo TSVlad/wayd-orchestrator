@@ -17,14 +17,20 @@ public class EventConsumer {
     @KafkaListener(id = "orchestrator-event-customer", topics = {"event-topic"}, containerFactory = "singleFactory")
     public void consume(EventMessage message) {
         switch (message.getType()) {
-            case CREATED:
+            case EVENT_CREATED:
                 eventCreated(message);
                 break;
+            case EVENT_UPDATED:
+                eventUpdated(message);
         }
 
     }
 
     private void eventCreated(EventMessage eventMessage) {
+        eventProducer.sendToValidator(eventMessage);
+    }
+
+    private void eventUpdated(EventMessage eventMessage) {
         eventProducer.sendToValidator(eventMessage);
     }
 }
