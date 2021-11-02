@@ -2,6 +2,7 @@ package ru.tsvlad.waydorchestrator.messaging.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -11,4 +12,7 @@ public class UserDTO {
     private List<RoleDTO> roles;
     private String contacts;
     private String email;
+    private Validity validityBadWords;
+    private UserStatus status;
+    private LocalDate dateOfBirth;
 }
