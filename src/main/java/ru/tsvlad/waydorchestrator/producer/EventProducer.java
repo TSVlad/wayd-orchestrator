@@ -13,4 +13,8 @@ public class EventProducer {
     public void sendToValidator(EventMessage message) {
         eventMessageKafkaTemplate.send("event-to-validator", message);
     }
+
+    public void sendToUser(EventMessage message) {
+        eventMessageKafkaTemplate.send("event-to-user", message);
+    }
 }

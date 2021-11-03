@@ -10,6 +10,7 @@ import ru.tsvlad.waydorchestrator.messaging.type.EventMessageType;
 public class EventMessage extends AbstractMessage {
     private EventMessageType type;
     private EventDTO eventDTO;
+    private long userId;
 
     public EventMessage() {
         super();
