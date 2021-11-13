@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 public class EventDTO {
     private String id;
+    private long version;
 
     private String name;
     private String description;

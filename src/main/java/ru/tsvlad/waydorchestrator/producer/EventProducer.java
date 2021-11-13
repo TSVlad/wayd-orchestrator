@@ -17,4 +17,8 @@ public class EventProducer {
     public void sendToUser(EventMessage message) {
         eventMessageKafkaTemplate.send("event-to-user", message);
     }
+
+    public void sendToNotification(EventMessage message) {
+        eventMessageKafkaTemplate.send("event-to-notification", message);
+    }
 }

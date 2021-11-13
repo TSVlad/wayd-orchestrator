@@ -23,6 +23,9 @@ public class EventConsumer {
             case EVENT_UPDATED:
                 eventUpdated(message);
                 break;
+            case EVENT_VALIDATED:
+                eventValidated(message);
+                break;
             case NEW_PARTICIPANT:
                 newParticipant(message);
                 break;
@@ -36,6 +39,10 @@ public class EventConsumer {
 
     private void eventUpdated(EventMessage eventMessage) {
         eventProducer.sendToValidator(eventMessage);
+    }
+
+    private void eventValidated(EventMessage eventMessage) {
+        eventProducer.sendToNotification(eventMessage);
     }
 
     private void newParticipant(EventMessage message) {
