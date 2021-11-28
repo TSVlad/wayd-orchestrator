@@ -10,6 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import ru.tsvlad.waydorchestrator.messaging.ModerationMessage;
 import ru.tsvlad.waydorchestrator.messaging.UserMessage;
 import ru.tsvlad.waydorchestrator.messaging.ValidatorMessage;
 import ru.tsvlad.waydorchestrator.messaging.EventMessage;
@@ -69,6 +70,18 @@ public class KafkaProducerConfig {
     @Bean
     public KafkaTemplate<Long, UserMessage> userMessageKafkaTemplate() {
         KafkaTemplate<Long, UserMessage> template = new KafkaTemplate<>(userMessageFactory());
+        template.setMessageConverter(new StringJsonMessageConverter());
+        return template;
+    }
+
+    @Bean
+    public ProducerFactory<Long, ModerationMessage> moderationMessageFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfigs("moderation-to-validator-"));
+    }
+
+    @Bean
+    public KafkaTemplate<Long, ModerationMessage> moderationMessageKafkaTemplate() {
+        KafkaTemplate<Long, ModerationMessage> template = new KafkaTemplate<>(moderationMessageFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
         return template;
     }
