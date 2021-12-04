@@ -9,6 +9,6 @@ import ru.tsvlad.waydorchestrator.messaging.type.ImageMessageType;
 @Data
 public class ImageMessage extends AbstractMessage {
     private ImageMessageType type;
-    private String imageName;
+    private String imageId;
     private byte[] image;
 }
