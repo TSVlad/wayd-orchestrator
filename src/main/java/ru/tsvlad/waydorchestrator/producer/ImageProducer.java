@@ -13,4 +13,8 @@ public class ImageProducer {
     public void sendToNeuronValidator(ImageMessage message) {
         imageMessageKafkaTemplate.send("image-to-neuron-validator", message);
     }
+
+    public void sendToModeration(ImageMessage message) {
+        imageMessageKafkaTemplate.send("image-to-moderation", message);
+    }
 }

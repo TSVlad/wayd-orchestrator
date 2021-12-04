@@ -20,6 +20,10 @@ public class ImageConsumer {
         switch (message.getType()) {
             case NEW_IMAGE:
                 imageProducer.sendToNeuronValidator(message);
+                break;
+            case INVALID_IMAGE:
+                imageProducer.sendToModeration(message);
+                break;
         }
     }
 }

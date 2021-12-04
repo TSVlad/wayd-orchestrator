@@ -9,6 +9,6 @@ import ru.tsvlad.waydorchestrator.messaging.type.NeuronValidatorMessageType;
 @Data
 public class NeuronValidatorMessage extends AbstractMessage {
     private NeuronValidatorMessageType type;
-    private String imageName;
+    private String imageId;
     private Validity validity;
 }
