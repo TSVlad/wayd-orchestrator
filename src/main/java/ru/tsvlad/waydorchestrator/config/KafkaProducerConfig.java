@@ -10,10 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import ru.tsvlad.waydorchestrator.messaging.ModerationMessage;
-import ru.tsvlad.waydorchestrator.messaging.UserMessage;
-import ru.tsvlad.waydorchestrator.messaging.ValidatorMessage;
-import ru.tsvlad.waydorchestrator.messaging.EventMessage;
+import ru.tsvlad.waydorchestrator.messaging.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,6 +79,30 @@ public class KafkaProducerConfig {
     @Bean
     public KafkaTemplate<Long, ModerationMessage> moderationMessageKafkaTemplate() {
         KafkaTemplate<Long, ModerationMessage> template = new KafkaTemplate<>(moderationMessageFactory());
+        template.setMessageConverter(new StringJsonMessageConverter());
+        return template;
+    }
+
+    @Bean
+    public ProducerFactory<Long, ImageMessage> imageMessageFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfigs("image-to-neuron-validator-"));
+    }
+
+    @Bean
+    public KafkaTemplate<Long, ImageMessage> imageMessageKafkaTemplate() {
+        KafkaTemplate<Long, ImageMessage> template = new KafkaTemplate<>(imageMessageFactory());
+        template.setMessageConverter(new StringJsonMessageConverter());
+        return template;
+    }
+
+    @Bean
+    public ProducerFactory<Long, NeuronValidatorMessage> neuronValidatorMessageFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfigs("neuron-validator-to-image-"));
+    }
+
+    @Bean
+    public KafkaTemplate<Long, NeuronValidatorMessage> neuronValidatorMessageKafkaTemplate() {
+        KafkaTemplate<Long, NeuronValidatorMessage> template = new KafkaTemplate<>(neuronValidatorMessageFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
         return template;
     }
