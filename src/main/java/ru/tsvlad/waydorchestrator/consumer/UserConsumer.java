@@ -20,6 +20,7 @@ public class UserConsumer {
                 userProducer.sendToValidator(userMessage);
                 break;
             case CONFIRMATION_CODE_GENERATED:
+            case ORGANIZATION_REGISTERED:
                 userProducer.sendToNotification(userMessage);
                 break;
         }
