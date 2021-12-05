@@ -13,4 +13,8 @@ public class ModerationProducer {
     public void sendToUser(ModerationMessage moderationMessage) {
         eventMessageKafkaTemplate.send("moderation-to-user", moderationMessage);
     }
+
+    public void sendToImage(ModerationMessage moderationMessage) {
+        eventMessageKafkaTemplate.send("moderation-to-image", moderationMessage);
+    }
 }

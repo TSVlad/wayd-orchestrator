@@ -23,6 +23,9 @@ public class ModerationConsumer {
             case UNBAN:
                 unban(message);
                 break;
+            case IMAGE_MODERATION_DECISION:
+                moderationProducer.sendToImage(message);
+                break;
         }
 
     }
