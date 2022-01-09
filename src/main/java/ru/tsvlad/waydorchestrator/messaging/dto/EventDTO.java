@@ -3,10 +3,11 @@ package ru.tsvlad.waydorchestrator.messaging.dto;
 import lombok.Data;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class EventDTO {
@@ -32,4 +33,5 @@ public class EventDTO {
 
     private long ownerId;
     private List<Long> participantsIds = new ArrayList<>();
+    private Map<Long, Integer> rates = new HashMap<>();
 }
