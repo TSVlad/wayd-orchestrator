@@ -12,6 +12,6 @@ import ru.tsvlad.waydorchestrator.messaging.type.ValidatorMessageType;
 public class ValidatorMessage extends AbstractMessage {
     private ValidatorMessageType type;
     private String eventId;
-    private long userId;
+    private String userId;
     private Validity validity;
 }
