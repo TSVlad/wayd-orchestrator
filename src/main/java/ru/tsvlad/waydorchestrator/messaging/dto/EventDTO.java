@@ -31,7 +31,7 @@ public class EventDTO {
     private Validity validity;
     private EventStatus status;
 
-    private long ownerId;
+    private String ownerId;
     private List<Long> participantsIds = new ArrayList<>();
     private Map<Long, Integer> rates = new HashMap<>();
 }

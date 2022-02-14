@@ -3,7 +3,6 @@ package ru.tsvlad.waydorchestrator.messaging;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import ru.tsvlad.waydorchestrator.messaging.dto.EventDTO;
-import ru.tsvlad.waydorchestrator.messaging.dto.JwtPayload;
 import ru.tsvlad.waydorchestrator.messaging.type.EventMessageType;
 
 @EqualsAndHashCode(callSuper = true)
