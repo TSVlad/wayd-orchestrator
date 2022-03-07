@@ -23,7 +23,10 @@ public class ModerationConsumer {
             case UNBAN:
                 unban(message);
                 break;
-            case IMAGE_MODERATION_DECISION:
+            case BLOCK_EVENT:
+                moderationProducer.sendToEvent(message);
+                break;
+            case BLOCK_IMAGE:
                 moderationProducer.sendToImage(message);
                 break;
         }
