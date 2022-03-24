@@ -16,6 +16,7 @@ public class EventConsumer {
 
     @KafkaListener(id = "orchestrator-event-customer", topics = {"event-topic"}, containerFactory = "singleFactory")
     public void consume(EventMessage message) {
+        log.debug("Message from event service gotten: {}", message);
         switch (message.getType()) {
             case EVENT_CREATED:
                 eventCreated(message);

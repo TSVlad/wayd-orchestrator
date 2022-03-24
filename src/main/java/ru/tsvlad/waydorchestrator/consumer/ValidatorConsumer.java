@@ -15,6 +15,7 @@ public class ValidatorConsumer {
 
     @KafkaListener(id = "orchestrator-event-validation-customer", topics = {"validator-topic"}, containerFactory = "singleFactory")
     public void consume(ValidatorMessage message) {
+        log.debug("Message from validator service gotten: {}", message);
         switch (message.getType()) {
             case EVENT_VALIDATED:
                 eventValidated(message);

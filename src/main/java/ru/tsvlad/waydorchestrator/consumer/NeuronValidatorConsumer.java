@@ -17,6 +17,7 @@ public class NeuronValidatorConsumer {
 
     @KafkaListener(topics = {"neuron-validator-topic"}, containerFactory = "singleFactory")
     public void consume(NeuronValidatorMessage message) {
+        log.debug("Message from neuron service gotten: {}", message);
         switch (message.getType()) {
             case IMAGE_VALIDATED:
                 neuronValidatorProducer.sendToImage(message);

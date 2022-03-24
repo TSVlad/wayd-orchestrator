@@ -16,6 +16,7 @@ public class ModerationConsumer {
 
     @KafkaListener(topics = {"moderation-topic"}, containerFactory = "singleFactory")
     public void consume(ModerationMessage message) {
+        log.debug("Message from moderation service gotten: {}", message);
         switch (message.getType()) {
             case BAN:
                 ban(message);

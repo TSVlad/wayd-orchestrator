@@ -17,6 +17,7 @@ public class ImageConsumer {
 
     @KafkaListener(topics = {"image-topic"}, containerFactory = "singleFactory")
     public void consume(ImageMessage message) {
+        log.debug("Message from image service gotten: {}", message);
         switch (message.getType()) {
             case NEW_IMAGE:
                 imageProducer.sendToNeuronValidator(message);
